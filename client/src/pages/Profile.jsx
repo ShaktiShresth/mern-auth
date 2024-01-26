@@ -116,7 +116,11 @@ const Profile = () => {
 
   const handleSignOut = async () => {
     try {
-      await fetch("/api/auth/signout");
+      await fetch("/api/auth/signout", {
+        method: "GET",
+        credentials: "include",
+        cache: "no-store",
+      });
       dispatch(signOut());
     } catch (error) {
       console.log(error);
