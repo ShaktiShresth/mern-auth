@@ -71,5 +71,13 @@ export const google = async (req, res, next) => {
 };
 
 export const signout = (req, res) => {
-  res.clearCookie("access_token").status(200).json("Signout success!");
+  res
+    .clearCookie("access_token")
+    .status(200)
+    .header({
+      "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+      Pragma: "no-cache",
+      Expires: "0",
+    })
+    .json("Signout success!");
 };
